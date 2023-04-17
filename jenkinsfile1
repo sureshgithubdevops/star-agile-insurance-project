@@ -41,6 +41,11 @@ pipeline {
     sh 'docker push 554716/insureproject1:latest'
              }
   }
+ stage('execute the playbook'){
+ steps {
+   ansiblePlaybook credentialsId: 'ansible-login', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'conf-deploy.yml'
+             }
+  }
 }
 }
 
