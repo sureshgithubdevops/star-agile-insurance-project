@@ -29,6 +29,13 @@ pipeline {
       sh 'docker build -t 554716/insureproject1:latest .'
           }
    }
+   stage('Docker Login'){
+   steps {
+     withCredentials([usernamePassword(credentialsId: 'Docker-Login', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+                      }
+              }
+  }
 }
 }
 
