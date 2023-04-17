@@ -36,6 +36,11 @@ pipeline {
                       }
               }
   }
+  stage('Push The Image To Docker Registry'){
+  steps {
+    sh 'docker push 554716/insureproject1:latest'
+             }
+  }
 }
 }
 
